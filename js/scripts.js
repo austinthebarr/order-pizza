@@ -9,6 +9,9 @@ function Pizza(toppings,size){
 $(function(){
   $("#inputForm").submit(function(event){
     event.preventDefault();
-    $
+    var inputtedToppings =  $("#toppings").val()
+    var inuputtedSize =  $("#size").val()
+    console.log(inputtedToppings)
+    console.log(inuputtedSize)
   });
 });
