@@ -8,7 +8,7 @@ function Pizza(toppings,size){
 Pizza.prototype.priceCheck = function(){
   if(this.size === "20 inch" && this.toppings === "Pepperoni" || this.toppings === "Spinach"){
     this.price += 5;
-  }else if(this.size === "20 inch" && this.toppings === "Skittles" || this.toppings === "Penutbutter Cups"){
+  }else if(this.size === "20 inch" && this.toppings === "Skittles" || this.toppings === "Fried Chicken"){
     this.price += 10;
   }else if(this.toppings === "Pepperoni" || this.toppings === "Spinach"){
     this.price -= 10;
@@ -24,6 +24,11 @@ $(function(){
 
     newPizza = new Pizza(inputtedToppings, inuputtedSize)
     newPizza.priceCheck()
+
+    $("#hide").show()
+    $(".finalPrice").text(newPizza.price)
+    $(".finalToppings").text(inputtedToppings)
+    $(".finalSize").text(inuputtedSize)
     console.log(newPizza)
     console.log(inuputtedSize)
   });
