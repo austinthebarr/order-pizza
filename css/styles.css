@@ -1,3 +1,17 @@
-#hide {
+#hide, #hideThis {
   display: none;
+}
+
+#hideThis {
+  padding-left: 23%;
+  background-color: black;
+}
+
+body {
+  font-family: 'Gloria Hallelujah', cursive;
+  background-image: url("../img/pizza.png");
+}
+
+.jumbotron{
+
 }

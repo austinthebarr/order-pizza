@@ -1,9 +1,13 @@
 //backend
+
+
 function Pizza(toppings,size){
   this.toppings = toppings
   this.size = size
   this.price = 20
 };
+
+
 
 Pizza.prototype.priceCheck = function(){
   if(this.size === "20 inch" && this.toppings === "Pepperoni" || this.toppings === "Spinach"){
@@ -15,20 +19,29 @@ Pizza.prototype.priceCheck = function(){
   }
 }
 
+
 //fronend
 $(function(){
+  ticket = 0;
   $("#inputForm").submit(function(event){
     event.preventDefault();
+    ticket += 1;
+
     var inputtedToppings =  $("#toppings").val()
     var inuputtedSize =  $("#size").val()
 
-    newPizza = new Pizza(inputtedToppings, inuputtedSize)
+    var newPizza = new Pizza(inputtedToppings, inuputtedSize)
     newPizza.priceCheck()
 
+    var priceString = newPizza.price.toLocaleString('en-US',{style: 'currency', currency: 'USD'});
+
     $("#hide").show()
-    $(".finalPrice").text(newPizza.price)
+    $("#hideThis").show()
+    $(".ticketNumber").text(ticket)
+    $(".finalPrice").text(priceString)
     $(".finalToppings").text(inputtedToppings)
     $(".finalSize").text(inuputtedSize)
+
     console.log(newPizza)
     console.log(inuputtedSize)
   });
