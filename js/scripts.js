@@ -1,10 +1,12 @@
 //backend
-
-
 function Pizza(toppings,size){
   this.toppings = toppings
   this.size = size
   this.price = 20
+};
+
+Pizza.prototype.pizzaType = function(){
+  return this.toppings + " " + this.size;
 };
 
 Pizza.prototype.priceCheck = function(){
@@ -17,7 +19,10 @@ Pizza.prototype.priceCheck = function(){
   }
 };
 
-
+function newOrder(){
+  $("#toppings").val('Pepperoni')
+  $("#size").val('12 inch')
+}
 //fronend
 $(function(){
   ticket = 0;
@@ -27,21 +32,21 @@ $(function(){
 
     var inputtedToppings =  $("#toppings").val()
     var inuputtedSize =  $("#size").val()
-
     var newPizza = new Pizza(inputtedToppings, inuputtedSize)
-    debugger;
+
     newPizza.priceCheck()
 
-    var priceString = newPizza.price.toLocaleString('en-US',{style: 'currency', currency: 'USD'});
-
-    $("#hide").show()
+    priceString = newPizza.price.toLocaleString('en-US',{style: 'currency', currency: 'USD'});
+    $("h2#multipleOrders").append('<span class="multiples">' + " "+ newPizza.pizzaType() + ", " + '</span>')
     $("#hideThis").show()
-    $(".ticketNumber").text(ticket)
-    $(".finalPrice").text(priceString)
-    $(".finalToppings").text(inputtedToppings)
-    $(".finalSize").text(inuputtedSize)
 
-    console.log(newPizza)
-    console.log(inuputtedSize)
+    $(".multiples").last().click(function() {
+      $("#hide").show();
+      $(".ticketNumber").text(ticket);
+      $(".finalPrice").text(priceString);
+      $(".finalToppings").text(newPizza.toppings);
+      $(".finalSize").text(newPizza.size);
+    });
+    newOrder();
   });
 });
