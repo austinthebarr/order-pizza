@@ -7,17 +7,15 @@ function Pizza(toppings,size){
   this.price = 20
 };
 
-
-
 Pizza.prototype.priceCheck = function(){
-  if(this.size === "20 inch" && this.toppings === "Pepperoni" || this.toppings === "Spinach"){
+  if(this.size === "20 inch" && this.toppings === "Pepperoni" || this.size === "20 inch" && this.toppings === "Spinach"){
     this.price += 5;
   }else if(this.size === "20 inch" && this.toppings === "Skittles" || this.toppings === "Fried Chicken"){
     this.price += 10;
   }else if(this.toppings === "Pepperoni" || this.toppings === "Spinach"){
     this.price -= 10;
   }
-}
+};
 
 
 //fronend
@@ -31,6 +29,7 @@ $(function(){
     var inuputtedSize =  $("#size").val()
 
     var newPizza = new Pizza(inputtedToppings, inuputtedSize)
+    debugger;
     newPizza.priceCheck()
 
     var priceString = newPizza.price.toLocaleString('en-US',{style: 'currency', currency: 'USD'});
